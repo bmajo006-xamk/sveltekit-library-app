@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model asiakkaat {
+  asiakasnro Int     @id @default(autoincrement())
+  sukunimi   String? @db.VarChar(255)
+  etunimi    String? @db.VarChar(255)
+  katuosoite String? @db.VarChar(255)
+  postinro   String? @db.VarChar(5)
+  postitmp   String? @db.VarChar(255)
+  puh        String? @db.VarChar(255)
+  myohastymismaksut Float @default(0)
+}
+model lainat {
+  laina_id     Int    @id @default(autoincrement())
+  asiakasnro   Int
+  teos_id      Int
+  luokka       String? @db.VarChar(10)
+  kirjoittaja  String? @db.VarChar(255)
+  nimike       String? @db.VarChar(255)
+  tyyppi       String @db.VarChar(255)
+  nide_id      Int
+  lainaus_pvm  DateTime @default(now())
+  palautus_pvm DateTime
+  myohastynyt_pvt Float @default(0)
+  myohastymismaksu Float @default(0)
+  palautettu  Boolean @default(false)
+}
+model palautukset {
+  palautus_id Int  @id @default(autoincrement())
+  laina_id    Int
+  asiakasnro  Int
+  teos_id     Int
+  luokka       String? @db.VarChar(10)
+  kirjoittaja  String? @db.VarChar(255)
+  nimike       String? @db.VarChar(255)
+  tyyppi       String @db.VarChar(255)
+  nide_id      Int
+  palautettu_pvm DateTime @default(now())
+  myohastynyt_pv Int
+}
+
+model niteet {
+  nide_id       Int    @id @default(autoincrement())
+  teos_id       Int
+  tyyppi        String @db.VarChar(255)
+  lainaaika_vrk Int    @default(28)
+}
+
+model teokset {
+  teos_id     Int     @id @default(autoincrement())
+  luokka      String? @db.VarChar(10)
+  kirjoittaja String? @db.VarChar(255)
+  nimike      String? @db.VarChar(255)
+}
