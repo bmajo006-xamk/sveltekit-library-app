@@ -1,5 +1,11 @@
-# Kirjaston lainaus- ja palautusautomaatti
+# Library check-out and return app
 
-Tämä on repositorio Sovellusohjelmoinnin ajankohtaiskurssi -opintojakson oppimistehtävien (Kirjaston lainaus- ja palautusautomaatti) palautukseen.
+The project has developed as part of my studies. 
+An application implemented using Svelte/SvelteKit/Prisma/sql technologies, allowing users to borrow and return library books. 
+Borrowing functions require user authentication, achieved by entering the library card number. 
+After borrowing, the user can view the borrowed items and their due dates. Returning the books do not require separate login. 
+The application also allows users to view and edit their personal information and overdue fines, with this functionality requiring authentication.
+The data for the application is sourced from its own database.
 
-Käytä toteutuksessa tässä repositoriossa olevaa tietokantaa (kirjasto.sql)  **Huom!** Annettu tietokanta ei ole vaatimusten suhteen täydellinen. Projektin toimeksiantoon kuuluu, että teet tarvittavia muutoksia ja lisäyksiä tietokantaan. Voit myös halutessasi toteuttaa tietokannan MongoDB-tietokantana (konvertoi sql-dump itse).
+
+
